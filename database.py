@@ -1,17 +1,22 @@
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from pymongo import MongoClient
+from pymongo.errors import ConnectionFailure
+import os
+from dotenv import load_dotenv
+load_dotenv()
+MONGO_URI = os.getenv("MONGO_URI")
 
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:NLRM@localhost/postgres"
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+try:
+    client = MongoClient(MONGO_URI)
+    client.admin.command('ping') 
+    print("MongoDB connected successfully.")
+except ConnectionFailure as e:
+    print(f"MongoDB connection failed: {e}")
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
-def db_get():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+db = client["task_manager_db"]
 
+users = db["users"]      
+tasks = db["tasks"]      
+
+users.create_index("username", unique=True)
+tasks.create_index("username")  

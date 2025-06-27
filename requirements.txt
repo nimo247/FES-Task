@@ -1,5 +1,9 @@
 fastapi
 uvicorn
-sqlalchemy
-psycopg2
 pydantic
+python-jose
+bcrypt
+pymongo
+python-dotenv
+passlib
+python-multipart

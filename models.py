@@ -1,11 +1,33 @@
-from sqlalchemy import Column, Integer, String, DateTime
+from pydantic import BaseModel
+from typing import Optional
 from datetime import datetime
-from database import Base
 
-class Task(Base):
-    __tablename__ = "tasks"
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
-    description = Column(String, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    filter = Column(bool, default=False)
+class TaskCreate(BaseModel):
+    title: str
+    description: Optional[str] = None
+    status:bool = False
+
+class TaskUpdate(BaseModel):
+    title: Optional[str] = None
+    description: Optional[str] = None
+    status: bool = False
+
+class TaskOut(BaseModel):
+    id: str
+    title: str
+    description: Optional[str] = None
+    created_at: datetime
+    status: bool =False
+
+class RegisterModel(BaseModel):
+    username: str
+    password: str
+
+class LoginModel(BaseModel):
+    username: str
+    password: str
+
+
+class UserOut(BaseModel):
+    username: str
+    token: str
