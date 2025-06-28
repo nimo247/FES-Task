@@ -28,8 +28,14 @@ bcrypt – Password hashing (via utility)
 API Rote Documentation - ![Sample](https://github.com/user-attachments/assets/ceb57ff1-ba6f-4945-aead-db1e978cea6b)
 
 Running instructions = pip install uvicorn  (run this in terminal)
+
+
                        uvicorn main:app --reload (run this in terminal)
+
+                       
                        after that in terminal you 'll get these type of "http://127.0.0.1:8000" link in your terminal
+
+                       
                        then paste that link in your browser and apply /docs with your link and then You are all set!
 
                        
