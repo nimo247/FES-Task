@@ -30,6 +30,8 @@ API Rote Documentation - ![Sample](https://github.com/user-attachments/assets/ce
 Running instructions = uvicorn main:app --reload (run this in terminal)
                        after that in terminal you 'll get these type of "http://127.0.0.1:8000" link in your terminal
                        then paste that link in your browser and apply /docs with your link and then You are all set!
+
+                       
 Sample Curl as follows :-
 1.Auth = ![S1](https://github.com/user-attachments/assets/39c2d974-a617-4322-9f0a-21d4d942efcc)
 2.Reg = ![S2](https://github.com/user-attachments/assets/b0919941-2e51-463a-bee7-a4e4e8413531)
